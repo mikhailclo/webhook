@@ -1,9 +1,19 @@
-# PHP Webhook Server
+# Actix-web Multipart Form Handler
 
-This PHP application handles webhook requests and processes form data. It checks for POST requests containing multipart/form-data and logs the information or handles errors appropriately.
+This project demonstrates a simple Actix-web server that handles multipart form data uploads, processes the form data, and stores an image file.
 
-To run:
+## Installation
+
+To install the dependencies, ensure you have Rust and Cargo installed, then run:
 
 ```bash
-php -S localhost:4000 server.php
+cargo build
+```
+
+## Running the Server
+
+To run the server, use the following command:
+
+```bash
+cargo run
 ```

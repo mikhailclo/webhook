@@ -1,19 +1,13 @@
-# Actix-web Multipart Form Handler
+# koa
 
-This project demonstrates a simple Actix-web server that handles multipart form data uploads, processes the form data, and stores an image file.
-
-## Installation
-
-To install the dependencies, ensure you have Rust and Cargo installed, then run:
+To install dependencies:
 
 ```bash
-cargo build
+yarn install
 ```
 
-## Running the Server
-
-To run the server, use the following command:
+To run:
 
 ```bash
-cargo run
+yarn run start
 ```
