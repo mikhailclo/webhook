@@ -1,4 +1,4 @@
-use actix_web::{web, App, HttpRequest, HttpResponse, HttpServer, Error};
+use actix_web::{web, App, Error, HttpRequest, HttpResponse, HttpServer};
 use actix_multipart::Multipart;
 use futures::StreamExt;
 use std::fs::File;
@@ -13,21 +13,22 @@ lazy_static! {
     static ref LOGS: Mutex<HashMap<String, String>> = Mutex::new(HashMap::new());
 }
 
-/**
- * Handles errors by logging the error message.
- * @param error - The error message to log.
- */
+/// Handles errors by logging the error message.
 fn error_handler(error: &str) {
     let mut logs = LOGS.lock().unwrap();
     logs.insert("errorHandler".to_string(), error.to_string());
     println!("errorHandler: {}", error);
 }
 
-/**
- * Processes the form data from the request.
- * @param payload - The form data from the request.
- * @returns A promise that resolves when the processing is complete.
- */
+/// Processes the form data from the request.
+///
+/// # Arguments
+///
+/// * `payload` - The form data from the request.
+///
+/// # Returns
+///
+/// A promise that resolves when the processing is complete.
 async fn process_form_data(mut payload: Multipart) -> Result<(), String> {
     let mut status = String::new();
     let mut id_gen = String::new();
@@ -71,12 +72,16 @@ async fn process_form_data(mut payload: Multipart) -> Result<(), String> {
     Ok(())
 }
 
-/**
- * Main handler function for the webhook endpoint.
- * @param req - The incoming request.
- * @param payload - The multipart payload.
- * @returns A promise that resolves to the response.
- */
+/// Main handler function for the webhook endpoint.
+///
+/// # Arguments
+///
+/// * `req` - The incoming request.
+/// * `payload` - The multipart payload.
+///
+/// # Returns
+///
+/// A promise that resolves to the response.
 async fn handle_webhook(req: HttpRequest, payload: Multipart) -> Result<HttpResponse, Error> {
     if req.method() != "POST" {
         return Ok(HttpResponse::MethodNotAllowed().finish());
