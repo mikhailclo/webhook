@@ -9,3 +9,20 @@ uploads
 venv
 .DS_Store
 target
+/java
+.idea/
+*.iml
+.gradle
+.idea
+generated
+
+
+# ruby
+.bundle/
+.yardoc
+_yardoc/
+coverage/
+doc/
+pkg/
+spec/reports/
+tmp/
